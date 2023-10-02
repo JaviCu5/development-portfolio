@@ -95,11 +95,11 @@ def jugada(word, failed_letters, coded_word, failures):
                   error = 102
 
       return failed_letters, coded_word, failures, error, guess_letter
-system("clear")
+system("cls")
 print("Tu palabra no puede tener caracteres especiales como ., !, ?, etc")
 word = input("Escoge la palabra a adivinar: ").upper()
 total_characters = len(word)
-system("clear")
+system("cls")
 
 coded_word = []
 print("El juego empieza: ")
@@ -121,7 +121,7 @@ while (failures < 6):
     failed_letters, coded_word, failures, error, guess_letter = jugada(word, failed_letters, coded_word, failures)
     final_word = ''.join(coded_word)
 
-    system("clear")
+    system("cls")
     if error == 100:
         print("La letra " + guess_letter + " ya ha sido usada :/")
     elif error == 101:
@@ -136,7 +136,7 @@ while (failures < 6):
     if "_ " not in coded_word:
         break
 
-system("clear")
+system("cls")
 if failures < 6:
     print("Ganaste!")
     print("La palabra era: "+final_word)
