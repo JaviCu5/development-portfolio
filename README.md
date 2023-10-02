@@ -16,3 +16,6 @@ git commit -m "Pequeña explicación de los cambios"
 
 git push
 
+https://github.com/JaviCu5/development-portfolio
+
+https://github.com/SelenaLA
