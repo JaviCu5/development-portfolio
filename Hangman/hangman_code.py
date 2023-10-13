@@ -1,5 +1,6 @@
 import unicodedata
 from os import system
+from spellchecker import SpellChecker
 
 def hangman(failures):
       if failures == 0:
@@ -95,11 +96,40 @@ def jugada(word, failed_letters, coded_word, failures):
                   error = 102
 
       return failed_letters, coded_word, failures, error, guess_letter
-system("cls")
+
+def corregir_ortografia(texto, lang):
+    # Crear una instancia del corrector ortográfico para el idioma especificado
+    spell = SpellChecker(language=lang)
+
+    # Dividir el texto en palabras
+    palabras = texto.split()
+
+    # Encontrar y corregir palabras mal escritas
+    correcciones = []
+    for palabra in palabras:
+        # Obtener la corrección sugerida para la palabra
+        correccion = spell.correction(palabra)
+        correcciones.append(correccion)
+
+    # Unir las palabras corregidas en un solo string
+    texto_corregido = ' '.join(correcciones)
+
+    return texto_corregido.upper()
+
+
+system("clear")
 print("Tu palabra no puede tener caracteres especiales como ., !, ?, etc")
-word = input("Escoge la palabra a adivinar: ").upper()
+
+lang = {"English": "en",
+        "Español": "es",
+        "Français": "fr",
+        "Português": "pt",
+        "Deutsch": "de"}
+
+word = input("Escoge la palabra a adivinar: ")
+word = corregir_ortografia(word, lang["Español"])
 total_characters = len(word)
-system("cls")
+system("clear")
 
 coded_word = []
 print("El juego empieza: ")
@@ -121,7 +151,7 @@ while (failures < 6):
     failed_letters, coded_word, failures, error, guess_letter = jugada(word, failed_letters, coded_word, failures)
     final_word = ''.join(coded_word)
 
-    system("cls")
+    system("clear")
     if error == 100:
         print("La letra " + guess_letter + " ya ha sido usada :/")
     elif error == 101:
@@ -136,7 +166,7 @@ while (failures < 6):
     if "_ " not in coded_word:
         break
 
-system("cls")
+system("clear")
 if failures < 6:
     print("Ganaste!")
     print("La palabra era: "+final_word)
