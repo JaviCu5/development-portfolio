@@ -1,0 +1,32 @@
+{
+      "es": {
+            "THE_HAGNMAN": "El ahorcado",
+            "SELECT_THE_LANGUAGE": "Selecciona el idioma: ",
+            "ACCEPT": "Aceptar",
+            "RULES": "Tu palabra no puede tener caracteres especiales como ., !, ?, etc",
+            "CHOOSE_WORD": "Escoge la palabra a adivinar: ",
+            "CURRENT_WORD": "La palabra actual: ",
+            "CHOOSE_LETTER": "Introduce una letra: ",
+            "JUST_LETTER": "¡Una sola letra!",
+            "FAILED_LETTERS": "El texto no contiene las siguientes letras: ",
+            "YOU_LOSE": "Perdiste :( El texto era: ",
+            "YOU_WIN": "¡Ganaste! El texto era: "
+      },
+      "en": {
+            "THE_HAGNMAN": "The hangman",
+            "SELECT_THE_LANGUAGE": "Select the language: ",
+            "ACCEPT": "Accept",
+            "RULES": "The word do not allow special characters like: ., !, ?, etc",
+            "CHOOSE_WORD": "Choose the word: ",
+            "CURRENT_WORD": "The current word: ",
+            "CHOOSE_LETTER": "Enter a letter: ",
+            "JUST_LETTER": "Just one letter!",
+            "FAILED_LETTERS": "This letters does not appear on the text: ",
+            "YOU_LOSE": "You lose :( The text was: ",
+            "YOU_WIN": "You win! The text was: "
+      },
+      "fr": {
+            "saludo": "Bonjour",
+            "despedida": "Au revoir"
+      }
+}
