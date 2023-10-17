@@ -1,0 +1,18 @@
+L sistema: 50x50
+Ocupación: 80%
+Ratio de blancas: 50%
+
+Satisfacción: 30%
+
+Segregación = Pares similares/pares totales
+
+Graficar el porcentaje de felicidad vs el número de iteraciones del sistema
+Calcular la segregación media y la desviación estándar.
+Sacar uno de los cmap final para visualizar la segregación.
+
+Algoritmo:
+- Con los parámetros de arriba creamos una distribución aleatoria de agentes (a las fichitas blancas y negras se le llaman agentes)
+- Calcular la felicidad de los agentes.
+- Mover un agente infeliz aleatoriamente
+
+La simulación acaba cuando todos los agentes están felices o si se ve que no va a converger nunca (aquí habrá que poner un numero máximo de iteraciones que me lo voy a inventar iter_max=10000)
