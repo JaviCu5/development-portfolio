@@ -6,8 +6,12 @@ Satisfacción: 30%
 
 Segregación = Pares similares/pares totales
 
-Graficar el porcentaje de felicidad vs el número de iteraciones del sistema
-Calcular la segregación media y la desviación estándar.
+Graficar el porcentaje de felicidad vs el número de iteraciones del sistema.
+      Felicidad total = 1/Totales * sum(felices)
+Graficar la segregación vs el numero de iteraciones del sistema.
+      Segregacion total = 1/Totales * sum(segregación local)
+      segregación local = pares similares/pares totales
+
 Sacar uno de los cmap final para visualizar la segregación.
 
 Algoritmo:
@@ -16,3 +20,8 @@ Algoritmo:
 - Mover un agente infeliz aleatoriamente
 
 La simulación acaba cuando todos los agentes están felices o si se ve que no va a converger nunca (aquí habrá que poner un numero máximo de iteraciones que me lo voy a inventar iter_max=10000)
+
+Parte 2
+Adecuar el código para:
+Calcular la segregación media y la desviación estándar, en cada iteración, para 100 simulaciones distintas.
+Lo mismo con la felicidad.
