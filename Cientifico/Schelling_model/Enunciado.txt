@@ -25,3 +25,6 @@ Parte 2
 Adecuar el código para:
 Calcular la segregación media y la desviación estándar, en cada iteración, para 100 simulaciones distintas.
 Lo mismo con la felicidad.
+
+Parte ? 
+CAmbio de opinion, predicadores que no se pueden cambiar de opinion y que se mas facil adoptar la opinion A que la B o al reves.
