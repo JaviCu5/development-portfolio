@@ -31,6 +31,24 @@ B_individuals = int(total_individuals-A_individuals)
 # We Will use 0 for blank places
 void_value = 0
 
+#Comput of the magnitudes for the initial random system
+def initial_matrix_evaluation(lateral_size, satisfaction, system_matrix):
+      unhappy_indexes = np.empty((0, 2), dtype=int)
+      total_neighbors = 0
+      happiness, segregation = 0, 0
+      for i in range(lateral_size):
+            for j in range(lateral_size):
+                  local_value = system_matrix[i,j]
+                  if local_value != 0:
+                        local_happiness, local_segregation, neigbor_count = local_happiness_segregation(system_matrix, i, j, satisfaction)
+                        total_neighbors += neigbor_count
+                        if local_happiness == True:
+                              happiness += 1
+                        else:
+                              unhappy_indexes = np.append(unhappy_indexes, np.array([(i,j)]), axis=0)
+                        segregation += local_segregation
+      return happiness, segregation, total_neighbors, unhappy_indexes
+
 def rand_initial_configuration_square_lattice(lateral_size, A_individuals, B_individuals):
       initial_conf = np.zeros((lateral_size,lateral_size), dtype=int)
       indexes = [(i, j) for i in range(lateral_size) for j in range(lateral_size)]
@@ -97,6 +115,7 @@ def cmap_creator(matrix, fig_name, A_value, B_value, directory_name):
       # Mostrar la matriz con el colormap y los límites
       plt.imshow(matrix, cmap=cmap, vmin=vmin, vmax=vmax, origin='lower')
       plt.savefig(directory_name+'/'+fig_name+'.png')
+      plt.close()
 
 def graphic_2_magnitudes_time(x, y1, y1_name, y2, y2_name, file_name):
       fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))  # 1 fila, 2 columnas
@@ -118,7 +137,7 @@ def graphic_2_magnitudes_time(x, y1, y1_name, y2, y2_name, file_name):
       plt.tight_layout()  # Ajusta el espacio entre los gráficos
 
       plt.savefig(file_name+'.png')
-      plt.show()
+      plt.close()
 
 def new_neighborhood_magnitudes(neighbors_positions, unhappy_indexes, satisfaction, matrix):
       delta_happiness, delta_segregation = 0,0
@@ -186,35 +205,20 @@ def GIF_creator(directory, image_files, GIF_name, frame_duration):
 
 system_matrix, void_indexes = rand_initial_configuration_square_lattice(lateral_size, A_individuals, B_individuals)
 
-happiness, segregation = 0, 0
 happiness_vec, segregation_vec = [],[]
-unhappy_indexes = np.empty((0, 2), dtype=int)
 
-total_neighbors = 0
-#Comput of the magnitudes for the initial random system
-for i in range(lateral_size):
-      for j in range(lateral_size):
-            local_value = system_matrix[i,j]
-            if local_value != 0:
-                  local_happiness, local_segregation, neigbor_count = local_happiness_segregation(system_matrix, i, j, satisfaction)
-                  total_neighbors += neigbor_count
-                  if local_happiness == True:
-                        happiness += 1
-                  else:
-                        unhappy_indexes = np.append(unhappy_indexes, np.array([(i,j)]), axis=0)
-                  segregation += local_segregation
+#Absolute happiness and segregation minus the possible individuals affected
+abs_happiness, abs_segregation, total_neighbors, unhappy_indexes = initial_matrix_evaluation(lateral_size, satisfaction, system_matrix)
 
 av_neigbhors = total_neighbors/total_individuals
 
-# Initial configuration and values
-cmap_creator(system_matrix, 'initial', A_value, B_value, GIF_images_directory)
-happiness = happiness/total_individuals
-segregation = segregation/(av_neigbhors*total_individuals)
+happiness = abs_happiness/total_individuals
+segregation = abs_segregation/(av_neigbhors*total_individuals)
 happiness_vec.append(happiness)
 segregation_vec.append(segregation)
 
-#Absolute happiness and segregation minus the possible individuals affected
-absolute_happiness, absolute_segregation = happiness*total_individuals, segregation*(av_neigbhors*total_individuals)
+# Initial configuration and values
+cmap_creator(system_matrix, 'initial', A_value, B_value, GIF_images_directory)
 
 iteration = 0
 while ((len(unhappy_indexes) > 0) and (iteration < maxIteration)):
@@ -262,21 +266,22 @@ while ((len(unhappy_indexes) > 0) and (iteration < maxIteration)):
       pos_happiness += 1 + pos_happiness_old_neig + pos_happiness_new_neig
       pos_segregation += new_local_segregation + pos_segregation_old_neig + pos_segregation_new_neig
       
-      absolute_happiness, absolute_segregation = absolute_happiness - neg_happiness + pos_happiness, absolute_segregation - neg_segregation + pos_segregation
+      abs_happiness, abs_segregation = abs_happiness - neg_happiness + pos_happiness, abs_segregation - neg_segregation + pos_segregation
 
-      happiness, segregation = absolute_happiness/total_individuals, absolute_segregation/(av_neigbhors*total_individuals)
+      happiness, segregation = abs_happiness/total_individuals, abs_segregation/(av_neigbhors*total_individuals)
       
       happiness_vec.append(happiness)
       segregation_vec.append(segregation)
-      
+      '''
       if ((iteration % frame_freq) and (createGIF)):
             cmap_creator(system_matrix, str(iteration//frame_freq), A_value, B_value, GIF_images_directory)
+      '''
       iteration += 1
 
 graphic_2_magnitudes_time([i for i in range(iteration+1)], happiness_vec, 'Happiness', segregation_vec, 'Segregation', 'magnitudes_overtime')
 cmap_creator(system_matrix, str((iteration-1)//frame_freq + 1), A_value, B_value, GIF_images_directory)
-
+"""
 image_files = [str(f)+'.png' for f in range((644-1)//frame_freq + 1)]
 if (createGIF):
       GIF_creator(GIF_images_directory, image_files, GIF_name, frame_duration)
-
+"""
