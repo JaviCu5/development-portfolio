@@ -1,21 +1,15 @@
-# development-portfolio
-This is a protfolio where I am uploading my personal codes to show as presentation of my programming skills
+# Development Portfolio
 
-Recuerda hacer:
+This is a portfolio where I upload personal projects and code I work on in my spare time (which isn’t that much).
+It’s a way to share my interests and give you a glimpse of how I like to work.
 
-git pull 
+## Scientific
+(Extra info inside) Most of the time coded in Python 3 or Jupyter Notebook.
+Still a work in progress.
 
-Antes de modificar nada.
+## Games
+(Extra info inside) Mostly coded in Python 3 or Jupyter Notebook as well.
+Also a work in progress.
 
-
-Cuando queiras subir algo pon:
-
-git add *
-
-git commit -m "Pequeña explicación de los cambios"
-
-git push
-
-https://github.com/JaviCu5/development-portfolio
-
-https://github.com/SelenaLA
+## Java Projects
+Currently empty, but I try to keep practicing so I don’t lose touch.
