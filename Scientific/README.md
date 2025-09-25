@@ -4,8 +4,8 @@ At this point, the Lotka-Volterra is the most analyzed and code developed.
 Coded with Python3
 
 **Libraries:**
-- numpy as np
-- random as rd
+- numpy
+- random
 - os
 - matplotlib.
 - PIL
