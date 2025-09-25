@@ -1,30 +1,30 @@
-L sistema: 50x50
-Ocupación: 80%
-Ratio de blancas: 50%
+System: 50x50
+Occupancy: 80%
+White ratio: 50%
 
-Satisfacción: 30%
+Satisfaction: 30%
 
-Segregación = Pares similares/pares totales
+Segregation = Similar pairs/total pairs
 
-Graficar el porcentaje de felicidad vs el número de iteraciones del sistema.
-      Felicidad total = 1/Totales * sum(felices)
-Graficar la segregación vs el numero de iteraciones del sistema.
-      Segregacion total = 1/Totales * sum(segregación local)
-      segregación local = pares similares/pares totales
+Plot the percentage of happiness vs. the number of iterations of the system.
+      Total happiness = 1/Totals * sum(happy)
+Plot segregation vs. the number of iterations of the system.
+      Total segregation = 1/Totals * sum(local segregation)
+      Local segregation = similar pairs/total pairs
 
-Sacar uno de los cmap final para visualizar la segregación.
+Take one of the final cmaps to visualize segregation.
 
-Algoritmo:
-- Con los parámetros de arriba creamos una distribución aleatoria de agentes (a las fichitas blancas y negras se le llaman agentes)
-- Calcular la felicidad de los agentes.
-- Mover un agente infeliz aleatoriamente
+Algorithm:
+- With the above parameters, we create a random distribution of agents (the white and black chips are called agents)
+- Calculate the happiness of the agents.
+- Move an unhappy agent randomly
 
-La simulación acaba cuando todos los agentes están felices o si se ve que no va a converger nunca (aquí habrá que poner un numero máximo de iteraciones que me lo voy a inventar iter_max=10000)
+The simulation ends when all agents are happy or if it is clear that it will never converge (here we will have to set a maximum number of iterations, which I will invent: iter_max=10000)
 
-Parte 2
-Adecuar el código para:
-Calcular la segregación media y la desviación estándar, en cada iteración, para 100 simulaciones distintas.
-Lo mismo con la felicidad.
+Part 2
+Adapt the code to:
+Calculate the mean segregation and standard deviation, in each iteration, for 100 different simulations.
+The same with happiness.
 
-Parte ? 
-CAmbio de opinion, predicadores que no se pueden cambiar de opinion y que se mas facil adoptar la opinion A que la B o al reves.
+Part ? 
+Change of opinion, preachers who cannot change their opinion and who find it easier to adopt opinion A than B or vice versa.

@@ -1,6 +1,6 @@
 I code basic games just for fun, super basic, no external interface.
 
-##Hangman
+## Hangman
 Coded with Python3
 
 **Libraries:**

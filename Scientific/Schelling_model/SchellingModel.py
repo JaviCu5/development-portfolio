@@ -109,32 +109,31 @@ def cmap_creator(matrix, fig_name, A_value, B_value, directory_name):
             os.mkdir(directory_name)
       cmap = plt.get_cmap('bwr')
 
-      # Definir los límites de color según tu rango (-1 a 1)
+      # Define our limits
       vmin, vmax = A_value, B_value
 
-      # Mostrar la matriz con el colormap y los límites
       plt.imshow(matrix, cmap=cmap, vmin=vmin, vmax=vmax, origin='lower')
       plt.savefig(directory_name+'/'+fig_name+'.png')
       plt.close()
 
 def graphic_2_magnitudes_time(x, y1, y1_name, y2, y2_name, file_name):
-      fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))  # 1 fila, 2 columnas
+      fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))  # 1 row, 2 columns
 
-      # Configurar el primer gráfico
+      # Set first graphic
       ax1.plot(x, y1, linestyle='-', color='b', label=y1_name)
       ax1.set_xlabel('time')
       ax1.set_ylabel(y1_name)
       ax1.legend()
       ax1.grid(True)
 
-      # Configurar el segundo gráfico
+      # 2nd graphic
       ax2.plot(x, y2, linestyle='--', color='r', label=y2_name)
       ax2.set_xlabel('time')
       ax2.set_ylabel(y2_name)
       ax2.legend()
       ax2.grid(True)
 
-      plt.tight_layout()  # Ajusta el espacio entre los gráficos
+      plt.tight_layout()
 
       plt.savefig(file_name+'.png')
       plt.close()
@@ -150,7 +149,7 @@ def new_neighborhood_magnitudes(neighbors_positions, unhappy_indexes, satisfacti
             if local_happiness == True:
                   delta_happiness += 1
                   if neighbors_position_list in unhappy_indexes_list:
-                        # Encuentra el índice del elemento a eliminar
+                        # Finding the changing index
                         index = unhappy_indexes_list.index(neighbors_position_list)
                         del unhappy_indexes_list[index]
             else:
