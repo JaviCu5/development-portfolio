@@ -1,6 +1,6 @@
 # Development Portfolio
 
-This is a portfolio where I upload personal projects and code I work on in my spare time (which isn’t that much).
+This is a portfolio where I upload personal projects and code, I work it on in my spare time (which isn’t that much).
 It’s a way to share my interests and give you a glimpse of how I like to work.
 
 ## Scientific
