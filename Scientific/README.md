@@ -25,5 +25,3 @@ Coded with Python, using Jupyter Notebook. (still working on it)
 **Theoretical frameworks:**  
 Describes the interaction between two populations (prey-predator). I'm trying to guide myself through this model and its possibilities.
 
-## Deterministic Chaos
-It is just the statement to follow, anything interesting
