@@ -12,4 +12,4 @@ Still a work in progress.
 Also a work in progress.
 
 ## Java Projects
-Currently empty, but I try to keep practicing so I don’t lose touch.
+(Extra info inside) Coded in Java. Work in progress.
