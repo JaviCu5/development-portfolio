@@ -5,9 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "tasks")
+@Table(name = "TASKS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,33 +19,30 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "TITLE", nullable = false)
     private String title;
 
-    @Column(length = 500)
+    @Column(name = "DESCRIPTION", length = 500)
     private String description;
 
-    @Column(name = "is_completed")
+    @Column(name = "IS_COMPLETED")
     private Boolean isCompleted = false;
 
-    @Column(name = "due_date")
+    @Column(name = "START_DATE")
+    private LocalDateTime startDate;
+
+    @Column(name = "DUE_DATE")
     private LocalDateTime dueDate;
 
-    @Column(name = "created_at")
+    @Column(name = "CREATED_AT")
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @Column(name = "UPDATED_AT")
     private LocalDateTime updatedAt;
 
-    // Constructor personalizado (sin id, createdAt, updatedAt)
-    public Task(String title, String description, Boolean isCompleted, LocalDateTime dueDate) {
-        this.title = title;
-        this.description = description;
-        this.isCompleted = isCompleted;
-        this.dueDate = dueDate;
-    }
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserTask> userIds = new ArrayList<>();
 
-    // Pre-persist y pre-update
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
