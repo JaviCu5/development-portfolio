@@ -37,13 +37,13 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserTask> taskIds = new ArrayList<>();
 
-    // Method to code the password before saving
+    // Method to encrypt password before saving
     public void setPassword(String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         this.password = passwordEncoder.encode(password);
     }
 
-    // Verifies the password at log in
+    // Method to verify password (for login)
     public boolean checkPassword(String rawPassword) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return passwordEncoder.matches(rawPassword, this.password);

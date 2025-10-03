@@ -15,11 +15,11 @@ public class UserTask {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "FK_USER_ID")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "TASK_ID")
+    @JoinColumn(name = "FK_TASK_ID")
     private Task task;
 
     @Column(name = "USER_ADMIN")

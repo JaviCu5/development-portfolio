@@ -1,9 +1,11 @@
 package org.example.task_planner.service;
 
+import org.example.task_planner.dto.UserLoginResponseDTO;
 import org.example.task_planner.model.User;
 import org.example.task_planner.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Optional;
 
 @Service
@@ -13,7 +15,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public User registerUser(User user) {
-        // The password is coded automatically in the setter
+        // Password is automatically encrypted in the setter
         return userRepository.save(user);
     }
 
